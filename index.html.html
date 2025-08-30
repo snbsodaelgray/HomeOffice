@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maria Rita - Transformamos Vendedores em Grandes Resultados</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-image: url('https://raw.githubusercontent.com/samueldomingosdesouza47-prog/logos/main/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: linear-gradient(45deg, #318138, #23e26c);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .whatsapp-btn:hover {
+            background: linear-gradient(45deg, #ffffff,     #318138);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(49, 129, 56, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.95;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-primary {
+            background: linear-gradient(45deg, #4e0efd, #23e26c);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-block;
+            animation: fadeInUp 1s ease 0.4s both;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(49, 129, 56, 0.3);
+        }
+
+        .cta-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .cta-primary:hover::before {
+            left: 100%;
+        }
+
+        .cta-primary:hover {
+            background: linear-gradient(45deg, #23e26c, #318138);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(49, 129, 56, 0.4);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: rgb(255, 255, 255);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(45deg, #318138, #23e26c);
+            border-radius: 2px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 4rem;
+        }
+
+        .profile-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .profile-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: rotate 20s linear infinite;
+        }
+
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+        }
+
+        .profile-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+
+        .profile-card .role {
+            opacity: 0.9;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .about-content h3 {
+            color: #318138;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #666;
+        }
+
+        .highlight {
+            background: linear-gradient(45deg, #318138, #23e26c);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        /* Company Section */
+        .company {
+            background: #f8f9fa;
+            padding: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #318138;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, #6f00ff 0%, #23e26c 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(49, 129, 56, 0.3);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-5px);
+        }
+
+        .testimonial-quote {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-weight: 600;
+            opacity: 0.9;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #f8f9fa;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        .contact-item {
+            margin: 1.5rem 0;
+        }
+
+        .contact-item strong {
+            color: #318138;
+        }
+
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* WhatsApp Float Button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: linear-gradient(45deg, #318138, #23e26c);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(49, 129, 56, 0.4);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 8px 25px rgba(49, 129, 56, 0.4);
+            }
+            50% {
+                box-shadow: 0 8px 35px rgba(49, 129, 56, 0.6);
+                transform: scale(1.05);
+            }
+            100% {
+                box-shadow: 0 8px 25px rgba(49, 129, 56, 0.4);
+            }
+        }
+
+        /* Logo Section */
+        .logos {
+            background: white;
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+        }
+
+        .logos-container {
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+            margin: 2rem 0;
+        }
+
+        .logos-slider {
+            display: inline-block;
+            animation: scroll 20s linear infinite;
+        }
+
+        .logo-item {
+            display: inline-block;
+            margin: 0 3rem;
+            vertical-align: middle;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo-item:hover {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .logo-item img {
+            height: 60px;
+            width: auto;
+            max-width: 150px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
+        }
+
+        .logo-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        /* Placeholder logo styles */
+        .logo-placeholder {
+            width: 120px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.9rem;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Pause animation on hover */
+        .logos-container:hover .logos-slider {
+            animation-play-state: paused;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .nav {
+                padding: 0 1rem;
+            }
+            
+            .whatsapp-btn span {
+                display: none;
+            }
+            
+            .hero-content, .container {
+                padding: 0 1rem;
+            }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Loading states */
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <a href="#" class="logo">Maria Rita</a>
+            <a href="https://wa.me/5544991770878?text=Olá! Quero saber mais sobre a oportunidade de vendas!" class="whatsapp-btn" target="_blank">
+                📱 <span>WhatsApp</span>
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Transformamos Vendedores em Grandes Resultados</h1>
+            <p class="subtitle">Treinamento, suporte e ferramentas para você vender mais e conquistar sua independência financeira.</p>
+            <a href="https://wa.me/5544991770878?text=Olá! Quero    saber mais sobre a oportunidade de vendas!" class="cta-primary" target="_blank">
+                👉 Quero saber mais no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Logo Section -->
+    <section class="logos">
+        <div class="container">
+            <h3 style="text-align: center; color: #5c1feb; margin-bottom: 1rem; font-size: 1.5rem;">Nossos Parceiros e Clientes</h3>
+            <div class="logos-container">
+                <div class="logos-slider">
+                    <!-- Sua logo principal -->
+                    <div class="logo-item">
+                        <div class="logo-placeholder">HOME OFFICE<br>LUCRATIVO</div>
+                    </div>
+                    
+                    <!-- Placeholders para outras logos - substitua pelos seus logos -->
+                    <div class="logo-item">
+                        <div class="logo-placeholder">BANCO<br>PARCEIRO</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">EMPRÉSTIMOS<br>BOLSA FAMÍLIA</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">EMPRÉSTIMOS<br>CREFAZ</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">FGTS<br>SOLUTIONS</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">DIGITAL<br>BANK</div>
+                    </div>
+                    
+                    <!-- Duplicar para efeito infinito -->
+                    <div class="logo-item">
+                        <div class="logo-placeholder">HOME OFFICE<br>LUCRATIVO</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">BANCO<br>PARCEIRO</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">EMPRÉSTIMOS<br>BOLSA FAMÍLIA</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">EMPRÉSTIMOS<br>CREFAZ</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">FGTS<br>SOLUTIONS</div>
+                    </div>
+                    <div class="logo-item">
+                        <div class="logo-placeholder">DIGITAL<br>BANK</div>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; color: #999; font-size: 0.9rem; margin-top: 1rem;">
+                Trabalhamos com as melhores instituições financeiras do mercado
+            </p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">🟢 Apresentação</h2>
+            <div class="about-grid">
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <img src="https://raw.githubusercontent.com/samueldomingosdesouza48-dotcom/maria-rita-fotos/main/image_optimized.webp" alt="Maria Rita" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 4px solid rgba(255,255,255,0.3);">
+                    </div>
+                    <h3>Maria Rita</h3>
+                    <p class="role">Supervisora de Equipe</p>
+                    <p><strong>4 anos</strong> de experiência no mercado financeiro</p>
+                </div>
+                <div class="about-content">
+                    <h3>Supervisora Maria Rita</h3>
+                    <p>Sou Maria Rita, supervisora de equipe com 4 anos de experiência no mercado financeiro, especialista em formar e liderar times no modelo de Home Office Lucrativo.</p>
+                    
+                    <p>Atualmente, lidero um time com mais de <strong>700 membros ativos</strong>, todos trabalhando de forma remota, com acompanhamento, estratégias e foco em resultados reais.</p>
+                    
+                    <p>Minha missão é ensinar, apoiar e inspirar pessoas comuns a conquistarem sua liberdade financeira, mesmo começando do zero.</p>
+                    
+                    <div class="highlight">
+                        🚀 Se você busca uma oportunidade verdadeira, com suporte diário, treinamentos e comissões diárias, o meu time é para você!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Section -->
+    <section class="company">
+        <div class="container">
+            <h2 class="section-title">🟢 Sobre a Empresa</h2>
+            <p style="text-align: center; font-size: 1.2rem; color: #666; margin-bottom: 2rem;">
+                Estamos há mais de 5 anos no mercado financeiro, com atuação em todo o Brasil e uma rede de aproximadamente 5 mil vendedores.
+            </p>
+            <p style="text-align: center; font-size: 1.1rem; color: #666;">
+                Nossa especialidade é atender clientes que buscam soluções de crédito, como operações relacionadas ao FGTS e demais modalidades de empréstimos.
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">5+</span>
+                    <span class="stat-label">Anos no Mercado</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5K</span>
+                    <span class="stat-label">Vendedores na Rede</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">700+</span>
+                    <span class="stat-label">Membros Ativos</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Home Office</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title">🟢 O que Oferecemos</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <span class="service-icon">🎓</span>
+                    <h3>Treinamento e Suporte Completos</h3>
+                    <p>Capacitação completa desde o básico até técnicas avançadas de vendas, com suporte contínuo para seu desenvolvimento.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">🛠️</span>
+                    <h3>Estrutura e Ferramentas</h3>
+                    <p>Todas as ferramentas necessárias para trabalhar com eficiência, incluindo sistemas, materiais e suporte técnico.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">⏰</span>
+                    <h3>Flexibilidade de Horário</h3>
+                    <p>Trabalhe nos seus próprios horários, conciliando com outras atividades e mantendo sua qualidade de vida.</p>
+                </div>
+                <div class="service-card">
+                    <span class="service-icon">💰</span>
+                    <h3>Renda Ilimitada</h3>
+                    <p>Sistema de comissões por vendas sem teto máximo. Quanto mais você vende, mais você ganha!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">💬 Depoimentos de Sucesso</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "No começo tive medo de não conseguir, mas com o treinamento da Supervisora Maria Rita em apenas 15 dias já fechei minhas primeiras vendas e recebi comissão no mesmo dia!"
+                    </p>
+                    <p class="testimonial-author">👤 Ana Paula – Consultora</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "O que mais gostei foi poder trabalhar de casa, com acompanhamento diário e metas claras. Hoje já consigo ajudar minha família com a renda extra que conquistei."
+                    </p>
+                    <p class="testimonial-author">👤 Carlos Eduardo – Consultor</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "Sempre procurei uma oportunidade verdadeira no home office, e aqui encontrei suporte e confiança. Além do dinheiro, ganhei uma equipe que me apoia todos os dias."
+                    </p>
+                    <p class="testimonial-author">👤 Juliana Souza – Consultora</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">
+                        "Nunca imaginei que poderia ter um time tão unido. Aprendi a vender de forma simples e já dobrei minha renda em menos de 2 meses."
+                    </p>
+                    <p class="testimonial-author">👤 Rafael Martins – Consultor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact">
+        <div class="container">
+            <h2 class="section-title">🟢 Chamada Final</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2rem; color: #666;">
+                Está pronto para transformar sua carreira e aumentar seus ganhos?
+            </p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <strong>📧 Contato:</strong> pretinha123@gmail.com
+                </div>
+                <div class="contact-item">
+                    <strong>🎯 Oportunidade:</strong> Atuação 100% remota em vendas de FGTS e empréstimos
+                </div>
+                <div class="contact-item">
+                    <strong>💼 Suporte:</strong> Temos 3 suportes prontos para ajudá-lo com qualquer dúvida e proporcionar o melhor atendimento
+                </div>
+            </div>
+            
+            <a href="https://wa.me/5544991770878?text=Olá! Quero participar da oportunidade de vendas da Maria Rita!" class="cta-primary" target="_blank" style="margin-top: 2rem;">
+                👉 Quero participar agora
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Maria Rita - Supervisora de Vendas. Todos os direitos reservados.</p>    
